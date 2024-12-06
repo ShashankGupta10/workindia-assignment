@@ -1,10 +1,19 @@
 import { Request, Response } from "express"
-import { loginSchema, registerSchema } from "../interfaces/auth";
 import { prisma } from "../db";
-import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import { addTrainSchema } from "../interfaces/train";
 
 export const addTrain = async (req: Request, res: Response) => {
-    console.log("ADD TRAIN");
+    const { success, data, error } = addTrainSchema.safeParse(req.body);
+    if (!success) {
+        res.status(400).json({ error: `${error?.errors[0]?.message}: ${error.errors[0]?.path}` });
+        return;
+    }
+
+    const { name, source, destination, totalSeats } = data;
+    
+    const train = await prisma.train.create({
+        data: { name, source, destination, totalSeats, availableSeats: totalSeats }
+    });
+
+    res.status(201).json({ message: "Train added successfully", train });
 }
