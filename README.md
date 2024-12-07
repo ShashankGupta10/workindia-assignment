@@ -94,24 +94,6 @@
 
   
 
-## Architecture Overview
-
-  
-
-The project follows a modular architecture, with different components responsible for specific tasks. The main components are:
-
-  
-
-1.  **API Routes**: Handles the API endpoints for fetching videos and health checks.
-
-3.  **Database**: Manages the database connection and creation of tables.
-
-4.  **Models**: Defines the database models for storing video data and fetch history.
-
-5.  **Utils**: Includes utility functions for configuration, task scheduling, and more.
-
-  
-
 ## Design Choices
 
   
@@ -261,12 +243,12 @@ Swagger UI provides an interactive documentation interface for exploring the API
 
   
 
-A live version of the application is available at [https://workindia-assignment.nymbus.xyz](https://workindia-assignment.nymbus.xyz).
+A live version of the application is available at [http://43.204.140.158:5000/ping](http://43.204.140.158:5000/swagger).
 
 
 Upon accessing the deployed version, please note the following:
 
-1.  **Health Check**: To ensure that the server is operational, you can access the `/ping` endpoint [here](https://workindia-assignment.nymbus.xyz/ping). A successful response indicates that the server is healthy and operational.
+1.  **Health Check**: To ensure that the server is operational, you can access the `/ping` endpoint [http://43.204.140.158:5000/ping](http://43.204.140.158:5000/ping). A successful response indicates that the server is healthy and operational.
 
  
   
