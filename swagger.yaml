@@ -119,7 +119,7 @@ paths:
         400:
           description: "Bad request."
 
-  /api/v1/user/login:
+  /api/v1/auth/login:
     post:
       summary: "User Login"
       description: "Logs in a user and returns a token."
@@ -150,6 +150,39 @@ paths:
                     example: "Login successful."
         401:
           description: "Invalid email or password."
+
+  /api/v1/booking/getSeatAvailability:
+    get:
+      summary: "Check Seat Availability"
+      description: "Checks the seat availability from source to destinations."
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: source
+          required: true
+          schema:
+            type: string
+          description: "The source station."
+        - in: path
+          name: destination
+          required: true
+          schema:
+            type: string
+          description: "The destination station."
+      responses:
+        200:
+          description: "Seat availability retrieved."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isBooked:
+                    type: boolean
+                    example: false
+        404:
+          description: "Seat not found."
 
   /api/v1/booking/bookSeat:
     post:
@@ -206,41 +239,6 @@ paths:
         401:
           description: "Unauthorized."
 
-  /api/v1/booking/getSeatAvailabilty:
-    get:
-      summary: "Check Seat Availability"
-      description: "Checks if a specific seat is booked."
-      security:
-        - BearerAuth: []
-      parameters:
-        - in: path
-          name: trainId
-          required: true
-          schema:
-            type: integer
-          description: "The ID of the train."
-        - in: path
-          name: seatNumber
-          required: true
-          schema:
-            type: integer
-          description: "The seat number."
-      responses:
-        200:
-          description: "Seat availability retrieved."
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  seatNumber:
-                    type: integer
-                    example: 45
-                  isBooked:
-                    type: boolean
-                    example: false
-        404:
-          description: "Seat not found."
 
   /api/v1/admin/addTrain:
     post:
@@ -262,6 +260,8 @@ paths:
                 destination:
                   type: string
                 totalSeats:
+                  type: integer
+                availableSeats:
                   type: integer
       responses:
         201:

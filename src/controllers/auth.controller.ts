@@ -1,72 +1,9 @@
 import { Request, Response } from "express"
 import { loginSchema, registerSchema } from "../interfaces/auth";
 import { prisma } from "../db";
-import { PrismaClientKnownRequestError, PrismaClientUnknownRequestError, PrismaClientValidationError } from "@prisma/client/runtime/library";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-
-
-/**
- * @swagger
- * tags:
- *   - name: Auth
- *     description: Authentication operations
- */
-
-/**
- * @swagger
- * /api/v1/auth/register:
- *   post:
- *     summary: Register a new user
- *     description: This endpoint allows a user to register by providing a name, email, and password.
- *     tags: [Auth]
- *     requestBody:
- *       description: User registration details
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *                 example: John Doe
- *               email:
- *                 type: string
- *                 example: johndoe@example.com
- *               password:
- *                 type: string
- *                 example: securePassword123
- *     responses:
- *       201:
- *         description: User created successfully
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: User created successfully
- *                 data:
- *                   type: object
- *                   properties:
- *                     id:
- *                       type: integer
- *                       example: 1
- *                     email:
- *                       type: string
- *                       example: johndoe@example.com
- *                     name:
- *                       type: string
- *                       example: John Doe
- *       400:
- *         description: Bad request, validation error
- *       409:
- *         description: User already exists
- *       500:
- *         description: Internal Server Error
- */
 
 export const register = async (req: Request, res: Response) => {
     const { success, data, error } = registerSchema.safeParse(req.body);
@@ -99,50 +36,6 @@ export const register = async (req: Request, res: Response) => {
     }
 }
 
-/**
- * @swagger
- * /api/v1/auth/login:
- *   post:
- *     summary: Login a user
- *     description: This endpoint allows a registered user to login by providing their email and password. A JWT token will be returned on successful authentication.
- *     tags: [Auth]
- *     requestBody:
- *       description: User login details
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *                 example: johndoe@example.com
- *               password:
- *                 type: string
- *                 example: securePassword123
- *     responses:
- *       200:
- *         description: Login successful, returns JWT token
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: Login successful
- *                 token:
- *                   type: string
- *                   example: "jwt_token_here"
- *       400:
- *         description: Bad request, validation error
- *       404:
- *         description: User not found
- *       401:
- *         description: Invalid credentials
- *       500:
- *         description: Internal Server Error
- */
 
 export const login = async (req: Request, res: Response) => {
     const { success, data, error } = loginSchema.safeParse(req.body);
