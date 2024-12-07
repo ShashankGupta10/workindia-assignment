@@ -79,7 +79,7 @@
 - Add automated tests to ensure that API endpoints work as expected.
 
 
-
+</details>
   
 
 ## Tech Stack
@@ -215,14 +215,14 @@ Swagger UI provides an interactive documentation interface for exploring the API
 
 -  **Screenshot 1**: Shows the endpoint for health check (`GET /ping`) in Swagger UI.
 
-![Screenshot 2](docs/ping.png)
+![Screenshot 1](docs/ping.png)
 
 #### Register User
 
 
 -  **Screenshot 2**: Illustrates the working of the register user endpoint
 
-![Screenshot 3](docs/register.png)
+![Screenshot 2](docs/register.png)
 
   
 
@@ -232,28 +232,28 @@ Swagger UI provides an interactive documentation interface for exploring the API
 
 -  **Screenshot 3**: Illustrates the working of the login user endpoint
 
-![Screenshot 4](docs/screenshots/login.png)
+![Screenshot 3](docs/login.png)
 
 #### Add Train
 
 -  **Screenshot 4**: Shows an example of a response when the admin adds a Train.
 
-![Screenshot 7](docs/screenshots/addTrain.png)
+![Screenshot 4](docs/addTrain.png)
 #### Get Seat Availability
 
 -  **Screenshot 5**: Shows an example of a response when the user checks the seat availability between 2 stations.
 
-![Screenshot 7](docs/screenshots/seatAvailability.png)
+![Screenshot 5](docs/seatAvailibility.png)
 #### Book Seat
 
 -  **Screenshot 6**: Shows an example of a response when the user tries to book a seat in the train.
 
-![Screenshot 7](docs/screenshots/bookSeat.png)
+![Screenshot 6](docs/bookSeat.png)
 #### Get Booking Details
 
 -  **Screenshot 7**: Shows an example of a response when the user tries to get their booking details.
 
-![Screenshot 7](docs/screenshots/getBooking.png)
+![Screenshot 7](docs/getBooking.png)
 
   
 
