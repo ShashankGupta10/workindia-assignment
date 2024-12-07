@@ -225,7 +225,7 @@ Swagger UI provides an interactive documentation interface for exploring the API
 
 -  **Screenshot 5**: Shows an example of a response when the user checks the seat availability between 2 stations.
 
-![Screenshot 5](docs/seatAvailibility.png)
+![Screenshot 5](docs/seatAvailibilty.png)
 #### Book Seat
 
 -  **Screenshot 6**: Shows an example of a response when the user tries to book a seat in the train.
@@ -243,7 +243,7 @@ Swagger UI provides an interactive documentation interface for exploring the API
 
   
 
-A live version of the application is available at [http://43.204.140.158:5000/ping](http://43.204.140.158:5000/swagger).
+A live version of the application is available at [http://43.204.140.158:5000/swagger](http://43.204.140.158:5000/swagger).
 
 
 Upon accessing the deployed version, please note the following:
